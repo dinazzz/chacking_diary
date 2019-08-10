@@ -23,9 +23,6 @@
 Добавляет случайно выбранную похвалу ученику, привязанному к учетной записи `schoolkid`. Для корректной работы функции необходимо импортировать
 модуль random.
 
-## Перед запуском
-Для корректной работы в shell не забудьте импортировать необходимые классы и модули командами: 
-
-`from datacenter.models import Chastisement, Schoolkid, Mark, Lesson, Commendation`
-
-`from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned`
+## Как пользоваться
+Положите файл ```script.py``` в папку с ```manage.py```. Через ```shell``` импортруйте модуль командой 
+`import scripts`.
