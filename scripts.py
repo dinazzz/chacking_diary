@@ -13,17 +13,17 @@ def get_schoolkid(name):
         print(f'Ученик с именем {name} отсутствует в базе.')
 
 
-def delete_chastsements(schoolkid):
+def delete_chastisements(schoolkid):
     chastisements = Chastisement.objects.filter(schoolkid=schoolkid)
     chastisements.delete()
 
 
 def fix_marks(schoolkid):
-    marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3]).update(points=5)
+    Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3]).update(points=5)
 
 
 def set_commendation(schoolkid, subject):
-    COMMENDATIONS = ['Молодец!',
+    commendations = ['Молодец!',
                      'Отлично!'
                      'Хорошо!',
                      'Гораздо лучше, чем я ожидал!'
@@ -35,4 +35,4 @@ def set_commendation(schoolkid, subject):
     year = schoolkid.year_of_study
     group_letter = schoolkid.group_letter
     lesson = Lesson.objects.filter(group_letter=group_letter, year_of_study=year, subject__title=subject).order_by('-date')[0]
-    Commendation.objects.create(text=random.choice(COMMENDATIONS), schoolkid=schoolkid, subject=lesson.subject, teacher=lesson.teacher, created=lesson.date)
+    Commendation.objects.create(text=random.choice(commendations), schoolkid=schoolkid, subject=lesson.subject, teacher=lesson.teacher, created=lesson.date)
